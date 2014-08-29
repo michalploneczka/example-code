@@ -646,7 +646,7 @@ class Basket
 			->queryRow();
 
 
-		$link = 'http://www.sklepbiegacza.pl/zamowienie/szczegoly/' . $order->id . '/' . $token;
+		$link = 'http://www.example.com/zamowienie/szczegoly/' . $order->id . '/' . $token;
 		$message['content'] = str_replace('{{LINK}}', $link, $message['content']);
 
 		$deliveryAddress = $order->buyer_postcode.' '.$order->buyer_city.', '.$order->buyer_address.' '.$order->buyer_house;
@@ -692,13 +692,13 @@ class Basket
 		$mail->setBody($message['content'], 'text/html');
 		$mail->setSubject($message['header']);
 		$mail->addTo($order->buyer_email);
-		$mail->from = 'zamowienia@sklepbiegacza.pl';
+		$mail->from = 'zamowienia@example.com';
 		Yii::app()->mail->transportType = 'smtp';
 
 		Yii::app()->mail->transportOptions = array(
 			'host' => 'mail.sklepbiegacza.pl',
-			'username' => 'zamowienia@sklepbiegacza.pl',
-			'password' => 'hod9cu7U',
+			'username' => 'zamowienia@example.com',
+			'password' => 'hod9cu7Uasdsad',
 			'port'     => '25'
 		);
 		Yii::app()->mail->send($mail);
